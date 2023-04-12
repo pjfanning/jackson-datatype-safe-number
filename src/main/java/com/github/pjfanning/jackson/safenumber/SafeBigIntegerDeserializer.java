@@ -1,6 +1,5 @@
 package com.github.pjfanning.jackson.safenumber;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
@@ -18,7 +17,7 @@ final class SafeBigIntegerDeserializer extends StdDeserializer<SafeBigInteger> {
     }
 
     @Override
-    public SafeBigInteger deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
+    public SafeBigInteger deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         try {
             return new SafeBigInteger(p.getValueAsString());
         } catch (ConstraintException e) {

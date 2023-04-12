@@ -1,7 +1,5 @@
 package com.github.pjfanning.jackson.safenumber;
 
-import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.KeyDeserializer;
 import com.github.pjfanning.safenumberparser.ConstraintException;
