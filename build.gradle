@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.pjfanning:safe-number-parser:0.1.0-SNAPSHOT'
+    implementation 'com.github.pjfanning:safe-number-parser:0.1.1-SNAPSHOT'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
     testImplementation platform('org.junit:junit-bom:5.9.2')
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -22,3 +22,17 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task createBuildProperties()  {
+    doLast {
+        def packageDir = new File(sourceSets.main.output.resourcesDir, "com/github/pjfanning/jackson/safenumber")
+        packageDir.mkdirs()
+        new File(packageDir, "build.properties").text =
+                """version: $version
+groupId: ${rootProject.group}
+artifactId: ${rootProject.name}
+"""
+    }
+}
+
+jar.dependsOn(createBuildProperties)
