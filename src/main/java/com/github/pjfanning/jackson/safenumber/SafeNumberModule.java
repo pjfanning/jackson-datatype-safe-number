@@ -28,9 +28,7 @@ public class SafeNumberModule extends Module {
     @Override
     public void setupModule(SetupContext context) {
         context.addDeserializers(new SafeNumberDeserializerResolver());
-        context.addSerializers(new SafeNumberSerializerResolver());
         context.addKeyDeserializers(new SafeNumberKeyDeserializerResolver());
-        context.addKeySerializers(new SafeNumberKeySerializerResolver());
     }
 
     private void initModule() {
