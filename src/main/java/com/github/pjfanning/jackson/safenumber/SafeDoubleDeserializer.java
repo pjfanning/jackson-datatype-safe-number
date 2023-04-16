@@ -1,13 +1,10 @@
 package com.github.pjfanning.jackson.safenumber;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.StreamReadFeature;
-import com.fasterxml.jackson.core.io.NumberInput;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.github.pjfanning.safenumberparser.ConstraintException;
 import com.github.pjfanning.safenumberparser.SafeDouble;
-import com.github.pjfanning.safenumberparser.SafeNumberParserConfig;
 
 import java.io.IOException;
 
