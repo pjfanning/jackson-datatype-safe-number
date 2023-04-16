@@ -21,17 +21,8 @@ final class SafeDoubleDeserializer extends StdDeserializer<SafeDouble> {
 
     @Override
     public SafeDouble deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
-        final String input = p.getValueAsString();
         try {
-            if (p.isEnabled(StreamReadFeature.USE_FAST_DOUBLE_PARSER)) {
-                if (input.length() > SafeNumberParserConfig.getDoubleMaxLength()) {
-                    throw new ConstraintException(
-                            "Failed to parse SafeDouble because the input is too long; max allowed chars is " +
-                                    SafeNumberParserConfig.getDoubleMaxLength());
-                }
-                return new SafeDouble(NumberInput.parseDouble(p.getValueAsString(), true));
-            }
-            return new SafeDouble(input);
+            return new SafeDouble(p.getValueAsString());
         } catch (ConstraintException e) {
             throw new IOException(e);
         }

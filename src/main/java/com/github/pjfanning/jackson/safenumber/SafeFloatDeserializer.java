@@ -21,17 +21,8 @@ final class SafeFloatDeserializer extends StdDeserializer<SafeFloat> {
 
     @Override
     public SafeFloat deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
-        final String input = p.getValueAsString();
         try {
-            if (p.isEnabled(StreamReadFeature.USE_FAST_DOUBLE_PARSER)) {
-                if (input.length() > SafeNumberParserConfig.getFloatMaxLength()) {
-                    throw new ConstraintException(
-                            "Failed to parse SafeFloat because the input is too long; max allowed chars is " +
-                                    SafeNumberParserConfig.getFloatMaxLength());
-                }
-                return new SafeFloat(NumberInput.parseFloat(p.getValueAsString(), true));
-            }
-            return new SafeFloat(input);
+            return new SafeFloat(p.getValueAsString());
         } catch (ConstraintException e) {
             throw new IOException(e);
         }
