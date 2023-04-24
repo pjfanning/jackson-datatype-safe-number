@@ -1,3 +1,7 @@
+[![Build (github)](https://github.com/pjfanning/jackson-datatype-safe-number/actions/workflows/ci.yml/badge.svg)](https://github.com/pjfanning/jackson-datatype-safe-number/actions/workflows/ci.yml)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.pjfanning/jackson-datatype-safe-number/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.pjfanning/jackson-datatype-safe-number)
+[![Javadoc](https://javadoc.io/badge/com.github.pjfanning/jackson-datatype-safe-number.svg)](https://javadoc.io/doc/com.github.pjfanning/jackson-datatype-safe-number)
+
 # jackson-datatype-safe-number
 Jackson bindings for [safe-number-parser](https://github.com/pjfanning/safe-number-parser) types.
 
