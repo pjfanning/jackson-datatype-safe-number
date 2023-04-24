@@ -20,7 +20,9 @@ final class SafeBigIntegerDeserializer extends StdDeserializer<SafeBigInteger> {
     public SafeBigInteger deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         try {
             return new SafeBigInteger(p.getValueAsString());
-        } catch (ConstraintException e) {
+        } catch (IOException e) {
+            throw e;
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }
