@@ -39,7 +39,9 @@ final class SafeBigDecimalDeserializer extends StdDeserializer<SafeBigDecimal> {
                 return new SafeBigDecimal(bigDecimal);
             }
             return new SafeBigDecimal(input);
-        } catch (ConstraintException e) {
+        } catch (IOException e) {
+            throw e;
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }

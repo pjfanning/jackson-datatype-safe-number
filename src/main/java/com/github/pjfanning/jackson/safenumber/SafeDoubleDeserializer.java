@@ -32,7 +32,9 @@ final class SafeDoubleDeserializer extends StdDeserializer<SafeDouble> {
                 return new SafeDouble(NumberInput.parseDouble(p.getValueAsString(), true));
             }
             return new SafeDouble(input);
-        } catch (ConstraintException e) {
+        } catch (IOException e) {
+            throw e;
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }

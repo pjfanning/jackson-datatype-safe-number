@@ -32,7 +32,9 @@ final class SafeFloatDeserializer extends StdDeserializer<SafeFloat> {
                 return new SafeFloat(NumberInput.parseFloat(p.getValueAsString(), true));
             }
             return new SafeFloat(input);
-        } catch (ConstraintException e) {
+        } catch (IOException e) {
+            throw e;
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }

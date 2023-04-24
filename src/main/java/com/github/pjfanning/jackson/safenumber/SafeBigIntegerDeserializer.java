@@ -11,7 +11,6 @@ import com.github.pjfanning.safenumberparser.SafeNumberParserConfig;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 final class SafeBigIntegerDeserializer extends StdDeserializer<SafeBigInteger> {
 
@@ -29,7 +28,7 @@ final class SafeBigIntegerDeserializer extends StdDeserializer<SafeBigInteger> {
                 if (input.length() > SafeNumberParserConfig.getBigIntegerMaxLength()) {
                     throw new ConstraintException(
                             "Failed to parse SafeBigInteger because the input is too long; max allowed chars is " +
-                                    SafeNumberParserConfig.getBigDecimalMaxLength());
+                                    SafeNumberParserConfig.getBigIntegerMaxLength());
                 }
                 if (SafeNumberParserConfig.isBigIntegerENotationSupported()) {
                     final BigDecimal bigDecimal = NumberInput.parseBigDecimal(p.getValueAsString(), true);
@@ -45,7 +44,9 @@ final class SafeBigIntegerDeserializer extends StdDeserializer<SafeBigInteger> {
                 return new SafeBigInteger(NumberInput.parseBigInteger(p.getValueAsString(), true));
             }
             return new SafeBigInteger(input);
-        } catch (ConstraintException e) {
+        } catch (IOException e) {
+            throw e;
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }
