@@ -20,7 +20,9 @@ final class SafeDoubleDeserializer extends StdDeserializer<SafeDouble> {
     public SafeDouble deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         try {
             return new SafeDouble(p.getValueAsString());
-        } catch (ConstraintException e) {
+        } catch (IOException e) {
+            throw e;
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }

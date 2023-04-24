@@ -20,7 +20,9 @@ final class SafeFloatDeserializer extends StdDeserializer<SafeFloat> {
     public SafeFloat deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         try {
             return new SafeFloat(p.getValueAsString());
-        } catch (ConstraintException e) {
+        } catch (IOException e) {
+            throw e;
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }

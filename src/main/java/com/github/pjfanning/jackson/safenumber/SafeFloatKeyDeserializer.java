@@ -15,7 +15,7 @@ final class SafeFloatKeyDeserializer extends KeyDeserializer {
     public Object deserializeKey(String key, DeserializationContext ctxt) throws IOException {
         try {
             return new SafeFloat(key);
-        } catch (ConstraintException e) {
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }
