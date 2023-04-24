@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.github.pjfanning'
-version = '2.14.0'
+version = '2.14.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
